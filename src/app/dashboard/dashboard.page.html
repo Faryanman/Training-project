@@ -1,0 +1,34 @@
+<h2 class="text-muted">Dashboard</h2>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card mb-3">
+      <div class="card-header">
+        Asset
+      </div>
+      <div class="card-body table-responsive">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Asset No</th>
+            <th>Category</th>
+            <th>Registration Date</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <ng-template let-asset let-last="last" let-index="i" ngFor [ngForOf]="assets$ | async">
+            <tr>
+              <th scope="row">{{i}}</th>
+              <td>{{asset.assetNo}}</td>
+              <td>{{asset.category | assetCategoryPipe}}</td>
+              <td>{{asset?.registeredDate | date:'shortDate' }}</td>
+              <td><a (click)="viewAsset(asset)" class="btn btn-primary btn-lg" role="button"><i
+                class="fa fa-fw fa-gear"></i></a></td>
+          </ng-template>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
